@@ -7,7 +7,7 @@ from sound import Sound
 
 class Ship(Sprite):
   exploding_images = [pg.image.load(f'images/explode{n}.png') for n in range(8)]
-  images = [pg.image.load(f'images/ship.bmp') for n in range(1)]
+  images = [pg.image.load('images/spaceship.png')]
    
   def __init__(self, game):
     super().__init__()
@@ -18,7 +18,7 @@ class Ship(Sprite):
     self.alien_fleet = None
     self.lasers = None
     self.stats = game.stats
-    self.image = pg.image.load('images/ship.bmp')
+    self.image = pg.image.load('images/spaceship.png')
 
     self.rect = self.image.get_rect()
     self.screen_rect = self.screen.get_rect()

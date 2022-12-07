@@ -3,7 +3,7 @@ from pygame.sprite import Group
 from ship import Ship
 
 
-DARK_GREY = (30, 30, 30)
+WHITE = (255, 255, 255)
 
 class SbElement:
     def __init__(self, screen, bg_color, ul, font, get_score, round=True):
@@ -13,7 +13,7 @@ class SbElement:
         self.ul = ul
         self.font = font
         self.round = round
-        self.text_color = DARK_GREY
+        self.text_color = WHITE
         self.score_image, self.score_rect = None, None
         self.get_score = get_score
         self.last_score = self.get_score()
@@ -49,7 +49,7 @@ class Scoreboard():
         screen = game.screen
         sr = screen.get_rect()
         self.bg_color = game.bg_color
-        font = pg.font.SysFont(None, 48)
+        font = pg.font.Font("font/gameFont2.ttf", 25)
 
         self.score = SbElement(screen=screen, bg_color=game.bg_color,
                                ul=(sr.right - 40, 20), font=font, 
@@ -87,3 +87,4 @@ class Scoreboard():
         self.highscore.draw()
         self.level.draw()
         self.draw_ships()
+

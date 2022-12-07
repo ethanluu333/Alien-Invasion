@@ -21,7 +21,7 @@ def check_events(game):
 
     for e in pg.event.get():
         if e.type == pg.QUIT:
-            game.finished = True
+            sys.exit()
         elif e.type == pg.KEYDOWN:
             if e.key in dir_keys:
                 v = dirs[dir_keys[e.key]]

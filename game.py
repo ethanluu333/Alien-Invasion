@@ -26,10 +26,12 @@ class Game:
         self.sound = Sound()
         self.sb = Scoreboard(game=self)
         pg.display.set_caption("Alien Invasion")
+        icon = pg.image.load('images/alien.png')
+        pg.display.set_icon(icon)
         self.ship = Ship(game=self)
         self.alien_fleet = AlienFleet(game=self)
         self.lasers = Lasers(game=self, owner=self.ship)                  # for ship lasers
-        # self.alien_lasers = Lasers(game=self, owner=self.alien_fleet)   # for alien lasers
+        self.alien_lasers = Lasers(game=self, owner=self.alien_fleet)   # for alien lasers
         self.ship.set_alien_fleet(self.alien_fleet)
         self.ship.set_lasers(self.lasers)
 
@@ -40,6 +42,7 @@ class Game:
         while self.sound.busy():    # wait for explosion sound to finish
             pass
         self.lasers.empty()
+        self.alien_lasers.empty()
         self.alien_fleet.empty()
         self.alien_fleet.create_fleet()
         self.ship.center_bottom()
@@ -59,7 +62,7 @@ class Game:
         self.ship.draw()
         self.alien_fleet.draw()
         self.lasers.draw()
-        #self.alien_laser.draw()
+        self.alien_lasers.draw()
         self.sb.draw()
         pg.display.flip()
 
